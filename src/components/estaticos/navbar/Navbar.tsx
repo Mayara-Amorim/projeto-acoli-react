@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 import { addToken } from "../../../store/tokens/actions";
 import { TokenState } from "../../../store/tokens/tokensReducer";
 
-function Navbar() {
-  const token = useSelector<TokenState, TokenState["tokens"]>(
+function Navbar(){
+const token = useSelector<TokenState, TokenState["tokens"]>(
     (state) => state.tokens
 );
 let navigate = useNavigate();
@@ -37,7 +37,7 @@ if (token !== "") {
         <Toolbar variant="dense">
             <Box className='cursor'>
                 <Typography variant="h5" color="inherit">
-                    Acoli
+                    BlogPessoal
                 </Typography>
             </Box>
 
