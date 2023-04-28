@@ -5,6 +5,7 @@ import Postagem from "../../../models/Postagem";
 import { buscaId, deleteId } from "../../../services/Service";
 import { TokenState } from "../../../store/tokens/tokensReducer";
 import { toast } from "react-toastify";
+import { useSelector } from 'react-redux';
 
 
 function DeletarPostagem() {
@@ -95,7 +96,3 @@ function DeletarPostagem() {
     );
 }
 export default DeletarPostagem;
-
-function useSelector<T, U>(arg0: (state: any) => any) {
-    throw new Error("Function not implemented.");
-}
