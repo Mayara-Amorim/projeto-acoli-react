@@ -75,13 +75,14 @@ function CadastroTema() {
   }
 
   return (
-    <Container maxWidth="sm" className="topo">
-      <form onSubmit={onSubmit}>
+    <Container maxWidth="sm" className="container-tema">
+      <form onSubmit={onSubmit} className="formulario-cadastrar-tema">
         <Typography
           variant="h3"
           color="textSecondary"
           component="h1"
           align="center"
+          className="titulo-cadastrar-tema"
         >
           Cadastrar Tema
         </Typography>
@@ -105,7 +106,7 @@ function CadastroTema() {
           margin="normal"
           fullWidth
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" className="btn-finalizar">
           Finalizar
         </Button>
       </form>

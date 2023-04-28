@@ -53,83 +53,29 @@ function CadastroUsuario() {
   }
 
   return (
-    <Grid
-      className="container-cadastro"
-      container
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Grid className="container-cadastro" container direction="row" justifyContent="center" alignItems="center">
       {/* <Grid item xs={6} className="img-cadastro">
         <img className="img-cadastro" src="./src/assets/foguete.svg" alt="" />
   </Grid> */}
       <Grid className="container-form-cadastro" item xs={4} alignItems="center">
         <Box>
-          <form onSubmit={onSubmit}>
-            <Typography
-              className="titulo-cadastro"
-              variant="h3"
-              gutterBottom
-              component="h3"
-              align="center"
-            >
+          <form onSubmit={onSubmit} className="form-tema">
+            <Typography className="titulo-cadastro" variant="h3" gutterBottom component="h3" align="center" >
               Entrar
             </Typography>
-            <TextField
-              value={user.nome}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-              id="nome"
-              label="Nome"
-              variant="outlined"
-              name="nome"
-              margin="normal"
-              fullWidth
-            />
-            <TextField
-              value={user.usuario}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-              id="email"
-              label="Email"
-              variant="outlined"
-              name="usuario"
-              margin="normal"
-              fullWidth
-            />
-            <TextField
-              value={user.senha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-              id="senhaCadastro"
-              label="Senha"
-              variant="outlined"
-              name="senha"
-              margin="normal"
-              type="password"
-              fullWidth
-            />
-            <TextField
-              value={confirmarSenha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                confirmarSenhaHandle(e)
-              }
-              id="confirmarSenha"
-              label="Confirmar Senha"
-              variant="outlined"
-              name="confirmarSenha"
-              margin="normal"
-              type="password"
-              fullWidth
-            />
+            <TextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="nome" label="Nome" variant="outlined" name="nome" margin="normal" fullWidth />
+            <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="email" label="Email" variant="outlined" name="usuario" margin="normal" fullWidth />
+            <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="senhaCadastro" label="Senha" variant="outlined" name="senha" margin="normal" type="password" fullWidth/>
+
+            <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id="confirmarSenha" label="Confirmar Senha" variant="outlined" name="confirmarSenha" margin="normal" type="password" fullWidth />
+
             <Box marginTop={2} textAlign="center" className="box-bottom">
               <Link to="/login" className="link-login-cadastro">
                 <Button className="btn-cancelar" variant="contained">
                   Cancelar
                 </Button>
               </Link>
-              <Button
-                className="btn-cadastrar"
-                type="submit"
-                variant="contained"
-              >
+              <Button className="btn-cadastrar" type="submit" variant="contained" >
                 Cadastrar
               </Button>
             </Box>

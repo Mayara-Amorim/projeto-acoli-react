@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import UserLogin from '../../models/UserLogin';
 import { login } from '../../services/Service';
+import { addToken } from '../../store/tokens/actions';
 
 function Login() {
   let history = useNavigate();
@@ -32,11 +33,12 @@ function Login() {
     });
   }
 
-  useEffect(() => {
-    if (token != "") {
-      history("/home");
+  useEffect(() => {//Controle do ciclo de vida de um componente
+    if (token != '') {
+        dispatch(addToken(token))
+        history('/home')
     }
-  }, [token]);
+}, [token])
 
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -91,7 +93,7 @@ function Login() {
               fullWidth
             />
             <Box marginTop={2} textAlign="center">
-              <Button className="btn-enviar" type="submit" variant="contained">
+              <Button className="btn-logar" type="submit" variant="contained">
                 Logar
               </Button>
             </Box>
