@@ -1,16 +1,20 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { Grid, TextField, Typography, Button } from "@material-ui/core";
-import { Box } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
-import { login } from "../../services/Service";
-import UserLogin from "../../models/UserLogin";
-import "./Login.css";
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Button, Grid, Paper, TextField, Typography} from '@material-ui/core';
+import{Box} from "@mui/material"
+import "./Home.css"
+import { Toolbar } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReducer';
+import UserLogin from '../../models/UserLogin';
+import { login } from '../../services/Service';
 
 function Login() {
   let history = useNavigate();
 
-  const [token, setToken] = useLocalStorage("token");
+  const dispatch = useDispatch();
+    const [token, setToken] =useState('');
 
   const [userLogin, setUserLogin] = useState<UserLogin>({
     id: 0,

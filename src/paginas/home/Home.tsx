@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Grid, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
 import "./Home.css";
+import TabPostagem from "../../components/postagens/tabPost/TabPost";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/tokensReducer";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import ModalPostagem from "../../components/postagens/modalPost/ModalPost";
 
 function Home() {
+  let navigate = useNavigate();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  useEffect(() => {
+    if (token == "") {
+      toast.error('Tu precisa estar logado', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
+      navigate("/login")
+
+    }
+  }, [token])
   return (
     <>
       <Grid container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "#3F51B5" }} >
@@ -17,18 +44,24 @@ function Home() {
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
-            <Box marginRight={1}></Box>
-            <Button variant="outlined" style={{ borderColor: "white", backgroundColor: "#3F51B5", color: "white" }}>
-              Ver Postagens
-            </Button>
+            <Box marginRight={1}>
+              <ModalPostagem />
+            </Box>
+            <Link to="/posts">
+              <Button variant="outlined" className='botao'>Ver Postagens</Button>
+            </Link>
           </Box>
         </Grid>
         <Grid item xs={6}>
           <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
         </Grid>
-        <Grid xs={12} style={{ backgroundColor: "white" }}></Grid>
+        <Grid xs={12} style={{ backgroundColor: "white" }}>
+          <TabPostagem />
+        </Grid>
       </Grid>
     </>
   );
 }
 export default Home;
+
+
